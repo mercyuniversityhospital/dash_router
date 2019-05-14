@@ -17,11 +17,8 @@ class TestRouter(unittest.TestCase):
         def annual(fullview=None):    
             return 'annual', fullview
 
-        try:
-            router.dispatch('/report/monthly')
-            self.fail('Should have thrown a 404')
-        except NotFound:
-            pass            
+        resp = router.dispatch('/report/monthly')
+        self.assertIn('404', resp.children[0].children[0], 'Should have thrown a 404')
      
         self.assertEqual(
             router.dispatch('/report/monthly/sectiona'), 
@@ -37,11 +34,8 @@ class TestRouter(unittest.TestCase):
             ('annual', None)
         )
         
-        try:
-            router.dispatch('/annual/section_b/full-view')
-            self.fail('Should have thrown a 404')
-        except NotFound:
-            pass
+        resp = router.dispatch('/annual/section_b/full-view')
+        self.assertIn('404', resp.children[0].children[0], 'Should have thrown a 404')
 
 
 if __name__ == '__main__':
