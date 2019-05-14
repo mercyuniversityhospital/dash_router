@@ -1,5 +1,5 @@
 # dash_router
-A simple router for multi page Dash applications. Uses [https://werkzeug.palletsprojects.com/en/0.15.x/routing/](Wekzeug rules).
+A simple router for multi page Dash applications. Uses [Wekzeug rules](https://werkzeug.palletsprojects.com/en/0.15.x/routing/).
 
 Use the built-in helper method:
 
