@@ -43,7 +43,7 @@ def page2():
 
 if __name__ == '__main__':
     app.run_server(debug=True)
-```python
+```
 
 or wire it in to an existing app:
 
@@ -79,4 +79,4 @@ def register_callbacks(app):
     )
     def display_page(pathname):
         return router.dispatch(pathname)
-```python
+```
