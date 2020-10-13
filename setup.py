@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='dash_router',
-    version='0.2.0',
+    version='0.2.1',
     description='A simple router for multi page Dash applications.',
     long_description=open('README.md').read(),
     long_description_content_type='text/markdown',

@@ -46,13 +46,13 @@ class Router:
         def display_page(pathname):
             return self.dispatch(pathname)        
 
-    def dispatch(self, path):
+    def dispatch(self, path, **kwargs):
         if path is None:
             return self.loading
         ma = self.url_map.bind(server_name=self.server_name)        
         try:
             endpoint, kwards = ma.match(path)
-            return self.view_functions[endpoint](**kwards)
+            return self.view_functions[endpoint](**kwards, **kwargs)
         except NotFound:
             return self.not_found
 
