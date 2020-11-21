@@ -2,6 +2,7 @@ from werkzeug.routing import Map, Rule, NotFound, RequestRedirect
 import dash
 import dash_html_components as html
 import dash_core_components as dcc
+from urllib import parse
 
 
 class Router:
@@ -41,10 +42,15 @@ class Router:
         dashapp.layout = self.layout
         @dashapp.callback(
             dash.dependencies.Output('page-content', 'children'),
-            [dash.dependencies.Input('url', 'pathname')]
+            [dash.dependencies.Input('url', 'pathname')],
+            [dash.dependencies.State("url", "search")],
         )
-        def display_page(pathname):
-            return self.dispatch(pathname)        
+        def display_page(pathname: str, search: str = None):
+            if search:
+                query_dict = dict(parse.parse_qsl(search[1:]))
+                return self.dispatch(pathname, **query_dict)
+            else:
+                return self.dispatch(pathname)    
 
     def dispatch(self, path, **kwargs):
         if path is None:
