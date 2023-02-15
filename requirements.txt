@@ -1,2 +1,2 @@
-werkzeug==0.15.3
+werkzeug==2.2.3
 dash==0.39.0
